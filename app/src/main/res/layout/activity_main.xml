@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="false"
+    tools:context="com.foreverrich.childrensong.VideoPlayActivity">
+
+    <com.foreverrich.childrensong.widget.UniversalVideoView
+        android:id="@+id/videoView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="false"/>
+
+    <com.foreverrich.childrensong.widget.UniversalMediaController
+        android:id="@+id/media_controller"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" />
+</FrameLayout>
