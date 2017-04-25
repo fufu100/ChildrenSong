@@ -1,0 +1,4 @@
+-首页
+http://ubestkid.com:8081/getidxrec.json?vps=8&ts1493048326439=
+-分类
+http://ubestkid.com:8081/1/getvideos.json?subcateid=53&p=3&ps=20
