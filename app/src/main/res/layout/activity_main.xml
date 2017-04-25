@@ -1,21 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fitsSystemWindows="false"
-    tools:context="com.foreverrich.childrensong.VideoPlayActivity">
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
 
-    <com.foreverrich.childrensong.widget.UniversalVideoView
-        android:id="@+id/videoView"
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <FrameLayout
+        android:id="@+id/empty"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fitsSystemWindows="false"/>
+        android:layout_marginTop="?actionBarSize"
+        android:background="@android:color/white"
+        android:visibility="gone">
+        <TextView
+            android:id="@+id/empty_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:drawablePadding="8dp"
+            android:layout_gravity="center"
+            android:text="@string/no_content"/>
+    </FrameLayout>
 
-    <com.foreverrich.childrensong.widget.UniversalMediaController
-        android:id="@+id/media_controller"
-        android:layout_width="fill_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical" />
+
 </FrameLayout>

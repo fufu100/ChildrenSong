@@ -19,7 +19,7 @@ public class VideoPlayActivity extends AppCompatActivity  implements UniversalVi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_video_play);
 
         info = getIntent().getParcelableExtra("video");
 
