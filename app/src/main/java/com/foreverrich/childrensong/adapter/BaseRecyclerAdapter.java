@@ -8,8 +8,8 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.TextView;
 
-import com.gamersky.R;
-import com.gamersky.utils.LogUtils;
+import com.foreverrich.childrensong.R;
+import com.foreverrich.childrensong.utils.LogUtils;
 
 import java.util.List;
 

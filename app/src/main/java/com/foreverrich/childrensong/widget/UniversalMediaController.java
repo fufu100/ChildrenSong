@@ -22,6 +22,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -424,54 +425,56 @@ public class UniversalMediaController extends FrameLayout {
 //        return false;
 //    }
 
-//    @Override
-//    public boolean dispatchKeyEvent(KeyEvent event) {
-//        int keyCode = event.getKeyCode();
-//        Log.d("Controller", "dispatchKeyEvent: "  + keyCode);
-//        final boolean uniqueDown = event.getRepeatCount() == 0
-//                && event.getAction() == KeyEvent.ACTION_DOWN;
-//        if (keyCode == KeyEvent.KEYCODE_HEADSETHOOK
-//                || keyCode == KeyEvent.KEYCODE_MEDIA_PLAY_PAUSE
-//                || keyCode == KeyEvent.KEYCODE_SPACE) {
-//            if (uniqueDown) {
-//                doPauseResume();
-//                show(sDefaultTimeout);
-//                if (mTurnButton != null) {
-//                    mTurnButton.requestFocus();
-//                }
-//            }
-//            return true;
-//        } else if (keyCode == KeyEvent.KEYCODE_MEDIA_PLAY) {
-//            if (uniqueDown && !mPlayer.isPlaying()) {
-//                mPlayer.start();
-//                updatePausePlay();
-//                show(sDefaultTimeout);
-//            }
-//            return true;
-//        } else if (keyCode == KeyEvent.KEYCODE_MEDIA_STOP
-//                || keyCode == KeyEvent.KEYCODE_MEDIA_PAUSE) {
-//            if (uniqueDown && mPlayer.isPlaying()) {
-//                mPlayer.pause();
-//                updatePausePlay();
-//                show(sDefaultTimeout);
-//            }
-//            return true;
-//        } else if (keyCode == KeyEvent.KEYCODE_VOLUME_DOWN
-//                || keyCode == KeyEvent.KEYCODE_VOLUME_UP
-//                || keyCode == KeyEvent.KEYCODE_VOLUME_MUTE
-//                || keyCode == KeyEvent.KEYCODE_CAMERA) {
-//            // don't show the controls for volume adjustment
-//            return super.dispatchKeyEvent(event);
-//        } else if (keyCode == KeyEvent.KEYCODE_BACK || keyCode == KeyEvent.KEYCODE_MENU) {
-//            if (uniqueDown) {
-//                hide();
-//            }
-//            return true;
-//        }
-//
-//        show(sDefaultTimeout);
-//        return super.dispatchKeyEvent(event);
-//    }
+    @Override
+    public boolean dispatchKeyEvent(KeyEvent event) {
+        int keyCode = event.getKeyCode();
+        Log.d("Controller", "dispatchKeyEvent: "  + keyCode);
+        final boolean uniqueDown = event.getRepeatCount() == 0
+                && event.getAction() == KeyEvent.ACTION_DOWN;
+        if (keyCode == KeyEvent.KEYCODE_HEADSETHOOK
+                || keyCode == KeyEvent.KEYCODE_MEDIA_PLAY_PAUSE
+                || keyCode == KeyEvent.KEYCODE_SPACE) {
+            if (uniqueDown) {
+                doPauseResume();
+                show(sDefaultTimeout);
+                if (mTurnButton != null) {
+                    mTurnButton.requestFocus();
+                }
+            }
+            return true;
+        } else if (keyCode == KeyEvent.KEYCODE_MEDIA_PLAY) {
+            if (uniqueDown && !mPlayer.isPlaying()) {
+                mPlayer.start();
+                updatePausePlay();
+                show(sDefaultTimeout);
+            }
+            return true;
+        } else if (keyCode == KeyEvent.KEYCODE_MEDIA_STOP
+                || keyCode == KeyEvent.KEYCODE_MEDIA_PAUSE) {
+            if (uniqueDown && mPlayer.isPlaying()) {
+                mPlayer.pause();
+                updatePausePlay();
+                show(sDefaultTimeout);
+            }
+            return true;
+        } else if (keyCode == KeyEvent.KEYCODE_VOLUME_DOWN
+                || keyCode == KeyEvent.KEYCODE_VOLUME_UP
+                || keyCode == KeyEvent.KEYCODE_VOLUME_MUTE
+                || keyCode == KeyEvent.KEYCODE_CAMERA) {
+            // don't show the controls for volume adjustment
+            return super.dispatchKeyEvent(event);
+        } else if (keyCode == KeyEvent.KEYCODE_BACK || keyCode == KeyEvent.KEYCODE_MENU ) {
+            if (uniqueDown) {
+                hide();
+            }
+            if(mLock) {
+                return true;
+            }
+        }
+
+        show(sDefaultTimeout);
+        return super.dispatchKeyEvent(event);
+    }
 
     private OnClickListener mPauseListener = new OnClickListener() {
         public void onClick(View v) {

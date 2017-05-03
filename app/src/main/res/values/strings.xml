@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ChildrenSong</string>
+    <string name="app_name">李静涵的儿歌</string>
     <string name="no_content">暂无相关内容</string>
     <string name="load_fail">加载失败</string>
     <string name="retry">重试</string>
